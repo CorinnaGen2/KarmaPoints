@@ -53,7 +53,7 @@ KarmaPoints is a React Native app built with Expo that gamifies the donation exp
 ### Add Deed flow
 
 Triggered by the floating plus button on Home, Deeds, and Causes screens. Two-step flow:
-1. Pick a category (Environment, Education, Health, Poverty, Animals, Community)
+1. Pick a category (Environment, Education, Health, Fight Poverty, Animals, Community)
 2. Choose from contextual suggestions or type a free-text deed
 
 ## Project Structure
