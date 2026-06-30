@@ -1,15 +1,29 @@
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import SoulJourneyOrb from '../../components/SoulJourneyOrb';
+import AddDeeds from '../../components/AddDeeds';
 
 export default function HomeScreen() {
+  const [isAddDeedsVisible, setIsAddDeedsVisible] = useState(false);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.emoji}>✦</Text>
-        <Text style={styles.title}>KarmaPoints</Text>
-        <Text style={styles.subtitle}>Turn kindness into impact</Text>
-        <Text style={styles.body}>Home screen — Soul Journey Orb, Karma Booster, Recent Deeds</Text>
+        <SoulJourneyOrb karmaPoints={1000} level={5} levelName="Master" progressPercent={75} />
+
+        <TouchableOpacity style={styles.addButton} onPress={() => setIsAddDeedsVisible(true)}>
+          <Text style={styles.addButtonText}>+ Add deed</Text>
+        </TouchableOpacity>
       </View>
+
+      <AddDeeds
+        visible={isAddDeedsVisible}
+        onClose={() => setIsAddDeedsVisible(false)}
+        onSubmit={(payload) => {
+          console.log('New deed:', payload);
+        }}
+      />
     </SafeAreaView>
   );
 }
@@ -25,25 +39,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 24,
   },
-  emoji: {
-    fontSize: 64,
-    color: '#F5B842',
-    marginBottom: 16,
+  addButton: {
+    marginTop: 24,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    borderRadius: 999,
+    backgroundColor: '#F5B842',
   },
-  title: {
-    fontSize: 32,
+  addButtonText: {
+    color: '#120E1F',
     fontWeight: '700',
-    color: '#FFFFFF',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#B0A8C8',
-    marginTop: 8,
-  },
-  body: {
-    fontSize: 14,
-    color: '#6B6490',
-    marginTop: 32,
-    textAlign: 'center',
   },
 });
