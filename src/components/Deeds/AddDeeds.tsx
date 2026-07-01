@@ -10,38 +10,11 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { categories, suggestionsByCategory } from './const';
+import { DeedCategory, AddDeedsProps } from './types';
+//style
+import {margins, paddings, fontSizes, fontWeights} from '../../constants/theme';
 
-type DeedCategory =
-  | 'Environment'
-  | 'Education'
-  | 'Health'
-  | 'Fight Poverty'
-  | 'Animals'
-  | 'Community';
-
-interface AddDeedsProps {
-  visible?: boolean;
-  onClose?: () => void;
-  onSubmit?: (payload: { category: DeedCategory; description: string }) => void;
-}
-
-const categories: DeedCategory[] = [
-  'Environment',
-  'Education',
-  'Health',
-  'Fight Poverty',
-  'Animals',
-  'Community',
-];
-
-const suggestionsByCategory: Record<DeedCategory, string[]> = {
-  Environment: ['Planted trees in a local park', 'Picked up litter on a walk', 'Used a reusable bottle'],
-  Education: ['Tutored a student after school', 'Donated books to a school library', 'Shared a useful resource'],
-  Health: ['Checked in on a neighbor', 'Supported a wellness event', 'Shared healthy habits'],
-  'Fight Poverty': ['Donated food to a local pantry', 'Helped with a food drive', 'Supported a community fund'],
-  Animals: ['Volunteered at an animal rescue', 'Helped foster a pet for a weekend', 'Fed stray animals'],
-  Community: ['Joined a neighborhood cleanup', 'Helped at a local event', 'Supported a friend in need'],
-};
 
 export default function AddDeeds({ visible = true, onClose = () => {}, onSubmit = () => {} }: AddDeedsProps) {
   const [step, setStep] = useState<1 | 2>(1);
@@ -178,9 +151,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 54,
     borderTopRightRadius: 54,
     backgroundColor: '#11111D',
-    paddingHorizontal: 20,
-    paddingBottom: 24,
-    paddingTop: 8,
+    paddingHorizontal: paddings.xl,
+    paddingBottom: paddings.xl,
+    paddingTop: paddings.s,
     borderColor: '#2B2345',
     borderWidth: 1,
   },
@@ -190,20 +163,20 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     backgroundColor: '#3B3158',
     alignSelf: 'center',
-    marginBottom: 12,
+    marginBottom: margins.m,
   },
   headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: margins.m,
   },
   headerTextWrap: {
     flex: 1,
   },
   eyebrow: {
     color: '#F5B842',
-    fontSize: 12,
+    fontSize: fontSizes.xs,
     letterSpacing: 1.4,
     textTransform: 'uppercase',
     fontWeight: '600',
@@ -211,7 +184,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#F6F2FF',
-    fontSize: 24,
+    fontSize: fontSizes.l,
     fontWeight: '700',
   },
   closeButton: {
@@ -224,7 +197,7 @@ const styles = StyleSheet.create({
   },
   closeText: {
     color: '#F6F2FF',
-    fontSize: 18,
+    fontSize: fontSizes.l,
     fontWeight: '600',
   },
   content: {
@@ -232,101 +205,101 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     color: '#B7B1CC',
-    fontSize: 14,
+    fontSize: fontSizes.s,
     lineHeight: 20,
-    marginBottom: 12,
+    marginBottom: margins.m,
   },
   optionButton: {
-    paddingVertical: 16,
-    paddingHorizontal: 16,
+    paddingVertical: paddings.m,
+    paddingHorizontal: paddings.m,
     borderRadius: 16,
     backgroundColor: '#1A1830',
     borderWidth: 1,
     borderColor: '#2D2644',
-    marginBottom: 10,
+    marginBottom: margins.s,
   },
   optionText: {
     color: '#F6F2FF',
-    fontSize: 16,
+    fontSize: fontSizes.m,
     fontWeight: '600',
-    marginBottom: 2,
+    marginBottom: margins.xxs,
   },
   optionHint: {
     color: '#8C86A5',
-    fontSize: 13,
+    fontSize: fontSizes.s,
   },
   selectedBox: {
-    paddingVertical: 12,
-    paddingHorizontal: 14,
+    paddingVertical: paddings.s,
+    paddingHorizontal: paddings.m,
     borderRadius: 16,
     backgroundColor: '#1B1630',
     borderWidth: 1,
     borderColor: '#3A2E61',
-    marginBottom: 12,
+    marginBottom: margins.m,
   },
   selectedLabel: {
     color: '#8C86A5',
-    fontSize: 12,
+    fontSize: fontSizes.xs,
     textTransform: 'uppercase',
     letterSpacing: 1.1,
-    marginBottom: 4,
+    marginBottom: margins.xs,
   },
   selectedValue: {
     color: '#F5B842',
-    fontSize: 16,
+    fontSize: fontSizes.m,
     fontWeight: '700',
   },
   sectionTitle: {
     color: '#F6F2FF',
-    fontSize: 15,
+    fontSize: fontSizes.m,
     fontWeight: '600',
     marginBottom: 8,
   },
   suggestionsWrap: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 12,
+    marginBottom: margins.m,
   },
   suggestionChip: {
     borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingHorizontal: paddings.m,
+    paddingVertical: paddings.xs,
     backgroundColor: '#231D39',
     borderWidth: 1,
     borderColor: '#3A2E61',
-    marginRight: 8,
-    marginBottom: 8,
+    marginRight: margins.s,
+    marginBottom: margins.s,
   },
   suggestionText: {
     color: '#F6F2FF',
-    fontSize: 13,
+    fontSize: fontSizes.s,
   },
   input: {
     minHeight: 96,
     borderRadius: 16,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
+    paddingHorizontal: paddings.l,
+    paddingVertical: paddings.l,
     backgroundColor: '#161423',
     color: '#F6F2FF',
     borderWidth: 1,
     borderColor: '#2D2644',
     textAlignVertical: 'top',
-    marginBottom: 12,
+    marginBottom: margins.m,
   },
   actions: {
     flexDirection: 'row',
-    marginTop: 4,
+    marginTop: margins.xs,
   },
   secondaryButton: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
+    paddingVertical: paddings.m,
     borderRadius: 14,
     backgroundColor: '#1D1C2D',
     borderWidth: 1,
     borderColor: '#2D2644',
-    marginRight: 10,
+    marginRight: margins.s,
   },
   secondaryText: {
     color: '#F6F2FF',
@@ -336,7 +309,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
+    paddingVertical: paddings.m,
     borderRadius: 14,
     backgroundColor: '#F5B842',
   },

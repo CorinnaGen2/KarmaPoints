@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SoulJourneyOrb from '../../components/SoulJourneyOrb';
-import AddDeeds from '../../components/AddDeeds';
+import AddDeeds from '../../components/Deeds/AddDeeds';
+import { Colors, FontWeights, Theme } from '@/constants/theme';
 
 export default function HomeScreen() {
   const [isAddDeedsVisible, setIsAddDeedsVisible] = useState(false);
@@ -13,7 +14,7 @@ export default function HomeScreen() {
         <SoulJourneyOrb karmaPoints={1000} level={5} levelName="Master" progressPercent={75} />
 
         <TouchableOpacity style={styles.addButton} onPress={() => setIsAddDeedsVisible(true)}>
-          <Text style={styles.addButtonText}>+ Add deed</Text>
+          <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
       </View>
 
@@ -47,7 +48,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5B842',
   },
   addButtonText: {
-    color: '#120E1F',
-    fontWeight: '700',
+    color: Colors.dark.muted,
+    fontWeight:FontWeights.large,
+    borderRadius: 999,
+    fontSize: 24,
   },
 });
