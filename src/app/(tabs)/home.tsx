@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import SoulJourneyOrb from '../../components/SoulJourneyOrb';
+import SoulJourneyOrb from '../../components/Home/SoulJourneyOrb';
 import AddDeeds from '../../components/Deeds/AddDeeds';
-import { Colors, FontWeights, Theme } from '@/constants/theme';
+
 
 export default function HomeScreen() {
   const [isAddDeedsVisible, setIsAddDeedsVisible] = useState(false);
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5B842',
   },
   addButtonText: {
-    color: Colors.dark.muted,
-    fontWeight:FontWeights.large,
+    color: '#0D0B1A',
+    fontWeight: 'bold',
     borderRadius: 999,
     fontSize: 24,
   },
